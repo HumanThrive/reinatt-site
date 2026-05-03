@@ -25,7 +25,9 @@
   --color-bg: oklch(99% 0 0);
   --color-fg: oklch(20% 0 0);
   --color-fg-muted: oklch(45% 0 0);
+  --color-fg-subtle: oklch(60% 0 0);
   --color-rule: oklch(90% 0 0);
+  --color-code-bg: oklch(96% 0 0);
 }
 
 html {
@@ -33,8 +35,12 @@ html {
   background: var(--color-bg);
   color: var(--color-fg);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* Inter v4 stylistic features: cv11 single-story 'a', ss03 simplified 'J'. */
   font-feature-settings: "cv11", "ss03";
+  /* Slightly tighter than browser default for prose readability. */
+  line-height: 1.6;
 }
 
 body {
@@ -49,7 +55,24 @@ a {
   text-underline-offset: 0.2em;
   text-decoration-thickness: 0.5px;
   text-decoration-color: var(--color-fg-muted);
+  transition: text-decoration-color 120ms ease, color 120ms ease;
 }
 a:hover {
   text-decoration-color: var(--color-fg);
+}
+
+/* Selection color */
+::selection {
+  background: oklch(85% 0.04 260);
+  color: var(--color-fg);
+}
+
+/* Reduce motion preference — disable transitions for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

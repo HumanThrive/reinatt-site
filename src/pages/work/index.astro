@@ -19,7 +19,9 @@ const entries = (await getCollection("work", ({ data }) => showDrafts || !data.d
 
   {
     entries.length === 0 ? (
-      <p class="mt-10 text-(--color-fg-muted)">No entries yet. Check back soon.</p>
+      <p class="mt-10 text-(--color-fg-muted)">
+        Curating. Selected entries land this week.
+      </p>
     ) : (
       <ul class="mt-10 space-y-8">
         {entries.map((entry) => (

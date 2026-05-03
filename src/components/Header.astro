@@ -10,16 +10,22 @@ const path = Astro.url.pathname;
 ---
 
 <header class="border-b border-(--color-rule)">
-  <div class="mx-auto w-full max-w-2xl px-6 py-6 flex items-baseline justify-between gap-6">
-    <a href="/" class="no-underline text-lg font-medium tracking-tight">Rei</a>
-    <nav class="flex gap-5 text-sm">
+  <div class="mx-auto w-full max-w-2xl px-6 py-5 flex items-baseline justify-between gap-4 flex-wrap">
+    <a
+      href="/"
+      class="no-underline text-lg font-medium tracking-tight hover:text-(--color-fg-muted) transition-colors"
+    >
+      Rei
+    </a>
+    <nav class="flex gap-x-5 gap-y-1 text-sm flex-wrap">
       {
         nav.map((item) => {
           const active = path === item.href || path.startsWith(item.href + "/");
           return (
             <a
               href={item.href}
-              class={`no-underline ${active ? "text-(--color-fg) font-medium" : "text-(--color-fg-muted) hover:text-(--color-fg)"}`}
+              class={`no-underline transition-colors ${active ? "text-(--color-fg) font-medium" : "text-(--color-fg-muted) hover:text-(--color-fg)"}`}
+              aria-current={active ? "page" : undefined}
             >
               {item.label}
             </a>

@@ -1,22 +1,38 @@
 ---
 const year = new Date().getFullYear();
+
+const linkClass =
+  "no-underline text-(--color-fg-muted) hover:text-(--color-fg) transition-colors";
 ---
 
-<footer class="border-t border-(--color-rule) text-sm text-(--color-fg-muted)">
-  <div class="mx-auto w-full max-w-2xl px-6 py-8 flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-baseline">
-    <div class="flex flex-wrap gap-x-4 gap-y-2">
-      <a href="mailto:reinuttanon@gmail.com" class="no-underline hover:underline">Email</a>
-      <a href="https://x.com/_reinatt" target="_blank" rel="me noopener" class="no-underline hover:underline">X</a>
-      <a href="https://instagram.com/_reinatt" target="_blank" rel="me noopener" class="no-underline hover:underline">Instagram</a>
-      <a
-        href="https://github.com/HumanThrive/reinatt-site"
-        target="_blank"
-        rel="noopener"
-        class="no-underline hover:underline"
-      >
-        Source
-      </a>
-    </div>
-    <div>© {year} Rei Nuttanon</div>
+<footer class="mt-20 border-t border-(--color-rule) text-sm">
+  <div
+    class="mx-auto w-full max-w-2xl px-6 py-8 flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-baseline"
+  >
+    <ul class="flex flex-wrap gap-x-4 gap-y-2 list-none p-0 m-0">
+      <li><a href="mailto:reinuttanon@gmail.com" class={linkClass}>Email</a></li>
+      <li>
+        <a href="https://x.com/_reinatt" target="_blank" rel="me noopener" class={linkClass}>X</a>
+      </li>
+      <li>
+        <a href="https://instagram.com/_reinatt" target="_blank" rel="me noopener" class={linkClass}>
+          Instagram
+        </a>
+      </li>
+      <li>
+        <a href="/rss.xml" class={linkClass}>RSS</a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/HumanThrive/reinatt-site"
+          target="_blank"
+          rel="noopener"
+          class={linkClass}
+        >
+          Source
+        </a>
+      </li>
+    </ul>
+    <div class="text-(--color-fg-muted)">© {year} Rei Nuttanon</div>
   </div>
 </footer>
