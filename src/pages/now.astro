@@ -10,24 +10,14 @@ const dateFmt = (d: Date) =>
   <article class="space-y-6">
     <header class="space-y-2">
       <h1 class="text-3xl font-medium tracking-tight">Now</h1>
-      <p class="text-sm text-(--color-fg-muted)">
+      <p class="text-sm text-(--color-fg-muted) underline">
         Last updated <time datetime={lastUpdated.toISOString()}>{dateFmt(lastUpdated)}</time>.
-        <a
-          href="https://nownownow.com/about"
-          target="_blank"
-          rel="noopener"
-          class="text-(--color-fg-muted)"
-        >
-          What is a /now page?
-        </a>
       </p>
     </header>
 
     <div class="prose-content space-y-5 leading-relaxed text-(--color-fg)">
       <p>
-        Currently in Bangkok. Rebuilding finances after the Vietnam years; targeting net zero by
-        end of November 2026. Working remote as an outsource developer on a backoffice system
-        for a digital marketing client.
+        I'm building stuff. Working remote as an outsource developer/consultant.
       </p>
 
       <p>
@@ -37,11 +27,7 @@ const dateFmt = (d: Date) =>
       </p>
 
       <p>
-        Also building this site — `reinatt.com` — as the long-form home for everything I write.
-      </p>
-
-      <p class="text-(--color-fg-muted) text-sm">
-        Phase 1 placeholder — Founder rewrites this with the real "now" snapshot during content week.
+        Also building this site as the long-form home for everything I write.
       </p>
     </div>
   </article>
