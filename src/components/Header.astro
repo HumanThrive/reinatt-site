@@ -1,0 +1,31 @@
+---
+const nav = [
+  { href: "/writing", label: "Writing" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/now", label: "Now" },
+];
+
+const path = Astro.url.pathname;
+---
+
+<header class="border-b border-(--color-rule)">
+  <div class="mx-auto w-full max-w-2xl px-6 py-6 flex items-baseline justify-between gap-6">
+    <a href="/" class="no-underline text-lg font-medium tracking-tight">Rei</a>
+    <nav class="flex gap-5 text-sm">
+      {
+        nav.map((item) => {
+          const active = path === item.href || path.startsWith(item.href + "/");
+          return (
+            <a
+              href={item.href}
+              class={`no-underline ${active ? "text-(--color-fg) font-medium" : "text-(--color-fg-muted) hover:text-(--color-fg)"}`}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>
