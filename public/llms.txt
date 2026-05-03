@@ -1,0 +1,35 @@
+# Rei Nuttanon
+
+> Builder. Fighter. Creator. — A person, not a brand.
+
+A Thai full-stack developer based in Bangkok, Thailand. Personal site at https://reinatt.com — portfolio + blog.
+
+## About
+
+Rei Nuttanon (display name: Rei). Full-stack developer since age 19, currently 33. Based in Bangkok, Thailand.
+
+Between ages 27 and 33, ran an idol management company in Ho Chi Minh City, Vietnam, for six years — managed seven artists and composed three original music tracks. The company is now closed; Rei relocated back to Bangkok and is rebuilding finances after that period.
+
+Writes about building, operating, and surviving small businesses from a non-Western perspective — at the intersection of tech, entertainment-industry operations, and the rebuild story honestly told. Voice has creative range: posts about dev craft and business operating sit alongside posts on film, music, photography, fashion, and design observation.
+
+Languages: English (fluent), Thai (fluent), Vietnamese (basic), Japanese (basic).
+
+## Site map
+
+- [/](https://reinatt.com/) — Home: identity paragraph, recent writing, selected work
+- [/writing](https://reinatt.com/writing) — All long-form posts (reverse-chronological)
+- [/work](https://reinatt.com/work) — Selected portfolio entries (curated, not exhaustive)
+- [/about](https://reinatt.com/about) — Longer-form bio, career arc, the rebuild story
+- [/now](https://reinatt.com/now) — Sivers-style "what Rei is doing now" page
+- [/rss.xml](https://reinatt.com/rss.xml) — RSS feed of new writing
+- [/sitemap-index.xml](https://reinatt.com/sitemap-index.xml) — Full sitemap
+
+## Optional
+
+- [Source code](https://github.com/HumanThrive/reinatt-site) — This site is open source
+
+## Contact
+
+- Email: reinuttanon@gmail.com
+- X: [@_reinatt](https://x.com/_reinatt)
+- Instagram: [@_reinatt](https://instagram.com/_reinatt)

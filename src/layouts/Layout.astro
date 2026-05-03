@@ -6,12 +6,21 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  type?: "website" | "article";
+  ogImage?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = "Rei",
   description = "Rei — a Thai full-stack dev who ran an idol management company in Vietnam, came back broken, and is rebuilding.",
+  type = "website",
+  ogImage,
+  jsonLd,
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedOgImage = ogImage ? new URL(ogImage, Astro.site).toString() : null;
 ---
 
 <!doctype html>
@@ -21,8 +30,29 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title="Rei — Writing" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    {/* Open Graph */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Rei" />
+    <meta property="og:locale" content="en_US" />
+    {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content={resolvedOgImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {resolvedOgImage && <meta name="twitter:image" content={resolvedOgImage} />}
+
+    {/* JSON-LD structured data */}
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />

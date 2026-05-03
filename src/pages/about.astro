@@ -1,8 +1,37 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rei Nuttanon",
+  "alternateName": "Rei",
+  "url": "https://reinatt.com/about",
+  "mainEntityOfPage": "https://reinatt.com/about",
+  "sameAs": [
+    "https://x.com/_reinatt",
+    "https://instagram.com/_reinatt",
+    "https://github.com/HumanThrive",
+  ],
+  "jobTitle": "Full-stack developer",
+  "description":
+    "Thai full-stack developer based in Bangkok. Builder, fighter, creator. Previously ran an idol management company in Vietnam (HCMC) for six years; rebuilding now in Bangkok.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bangkok",
+    "addressCountry": "TH",
+  },
+  "knowsLanguage": ["en", "th", "vi", "ja"],
+  "nationality": { "@type": "Country", "name": "Thailand" },
+  "alumniOf": [],
+};
 ---
 
-<Layout title="About — Rei" description="About Rei Nuttanon — a Thai full-stack dev who ran an idol management company in Vietnam, came back broken, and is rebuilding.">
+<Layout
+  title="About — Rei"
+  description="About Rei Nuttanon — a Thai full-stack dev who ran an idol management company in Vietnam, came back broken, and is rebuilding."
+  jsonLd={personSchema}
+>
   <article class="space-y-6">
     <header class="space-y-2">
       <h1 class="text-3xl font-medium tracking-tight">About</h1>

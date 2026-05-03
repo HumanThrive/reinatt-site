@@ -16,9 +16,32 @@ const featuredWork = allWork
 
 const dateFmt = (d: Date) =>
   d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rei Nuttanon",
+  "alternateName": "Rei",
+  "url": "https://reinatt.com",
+  "sameAs": [
+    "https://x.com/_reinatt",
+    "https://instagram.com/_reinatt",
+    "https://github.com/HumanThrive",
+  ],
+  "jobTitle": "Full-stack developer",
+  "description":
+    "Thai full-stack developer based in Bangkok. Builder, fighter, creator. Previously ran an idol management company in Vietnam.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bangkok",
+    "addressCountry": "TH",
+  },
+  "knowsLanguage": ["en", "th", "vi", "ja"],
+  "nationality": { "@type": "Country", "name": "Thailand" },
+};
 ---
 
-<Layout title="Rei">
+<Layout title="Rei" jsonLd={personSchema}>
   <section class="space-y-4">
     <h1 class="text-3xl font-medium tracking-tight">Rei</h1>
     <p class="text-(--color-fg) leading-relaxed">
