@@ -1,0 +1,74 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const showDrafts = !import.meta.env.PROD;
+  const entries = await getCollection("work", ({ data }) => showDrafts || !data.draft);
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"work">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${entry.data.title} — Rei`} description={entry.data.summary}>
+  <article class="space-y-6">
+    <header class="space-y-3">
+      <h1 class="text-3xl font-medium tracking-tight leading-tight">{entry.data.title}</h1>
+      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm text-(--color-fg-muted)">
+        <span>{entry.data.role}</span>
+        <span>·</span>
+        <span>{entry.data.period}</span>
+        {entry.data.draft && <><span>·</span><span class="text-amber-600">draft</span></>}
+      </div>
+      <p class="text-(--color-fg) leading-relaxed">{entry.data.summary}</p>
+      {
+        (entry.data.liveUrl || entry.data.repoUrl || entry.data.caseStudyUrl) && (
+          <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm pt-1">
+            {entry.data.liveUrl && (
+              <li>
+                <a href={entry.data.liveUrl} target="_blank" rel="noopener">Live →</a>
+              </li>
+            )}
+            {entry.data.repoUrl && (
+              <li>
+                <a href={entry.data.repoUrl} target="_blank" rel="noopener">Repo →</a>
+              </li>
+            )}
+            {entry.data.caseStudyUrl && (
+              <li>
+                <a href={entry.data.caseStudyUrl} target="_blank" rel="noopener">Case study →</a>
+              </li>
+            )}
+          </ul>
+        )
+      }
+    </header>
+
+    {
+      entry.data.cover && (
+        <Image
+          src={entry.data.cover}
+          alt={entry.data.title}
+          class="rounded border border-(--color-rule)"
+        />
+      )
+    }
+
+    <div
+      class="prose-content space-y-5 leading-relaxed [&_h2]:text-xl [&_h2]:font-medium [&_h2]:mt-10 [&_h2]:mb-3 [&_h3]:text-lg [&_h3]:font-medium [&_h3]:mt-8 [&_h3]:mb-2 [&_p]:leading-relaxed [&_a]:underline [&_a]:underline-offset-2 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mt-1 [&_blockquote]:border-l-2 [&_blockquote]:border-(--color-rule) [&_blockquote]:pl-4 [&_blockquote]:text-(--color-fg-muted) [&_pre]:bg-stone-100 [&_pre]:p-4 [&_pre]:rounded [&_pre]:overflow-x-auto [&_pre]:text-sm [&_code]:font-mono [&_code]:text-sm [&_:not(pre)>code]:bg-stone-100 [&_:not(pre)>code]:px-1 [&_:not(pre)>code]:py-0.5 [&_:not(pre)>code]:rounded"
+    >
+      <Content />
+    </div>
+  </article>
+</Layout>

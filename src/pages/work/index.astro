@@ -1,0 +1,45 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const showDrafts = !import.meta.env.PROD;
+
+const entries = (await getCollection("work", ({ data }) => showDrafts || !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Layout title="Work — Rei" description="Selected work by Rei Nuttanon — a curated set of projects, builds, and ventures.">
+  <section class="space-y-2">
+    <h1 class="text-3xl font-medium tracking-tight">Work</h1>
+    <p class="text-(--color-fg-muted) text-sm">
+      A curated set, not exhaustive. Career history lives on <a href="/about">about</a>.
+    </p>
+  </section>
+
+  {
+    entries.length === 0 ? (
+      <p class="mt-10 text-(--color-fg-muted)">No entries yet. Check back soon.</p>
+    ) : (
+      <ul class="mt-10 space-y-8">
+        {entries.map((entry) => (
+          <li>
+            <a href={`/work/${entry.id}`} class="no-underline group block">
+              <div class="flex items-baseline justify-between gap-4">
+                <h2 class="font-medium text-lg group-hover:underline underline-offset-2 decoration-(--color-fg)">
+                  {entry.data.title}
+                </h2>
+                <span class="text-sm text-(--color-fg-muted) shrink-0">{entry.data.period}</span>
+              </div>
+              <div class="text-sm text-(--color-fg-muted) mt-1">{entry.data.role}</div>
+              <p class="text-sm text-(--color-fg-muted) mt-2 leading-relaxed">{entry.data.summary}</p>
+              {entry.data.draft && (
+                <div class="text-xs text-amber-600 mt-2">draft</div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Layout>

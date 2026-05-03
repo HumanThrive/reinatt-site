@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const lastUpdated = new Date("2026-05-03");
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<Layout title="Now — Rei" description="What Rei is doing now — current location, focus, side projects.">
+  <article class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-3xl font-medium tracking-tight">Now</h1>
+      <p class="text-sm text-(--color-fg-muted)">
+        Last updated <time datetime={lastUpdated.toISOString()}>{dateFmt(lastUpdated)}</time>.
+        <a
+          href="https://nownownow.com/about"
+          target="_blank"
+          rel="noopener"
+          class="text-(--color-fg-muted)"
+        >
+          What is a /now page?
+        </a>
+      </p>
+    </header>
+
+    <div class="prose-content space-y-5 leading-relaxed text-(--color-fg)">
+      <p>
+        Currently in Bangkok. Rebuilding finances after the Vietnam years; targeting net zero by
+        end of November 2026. Working remote as an outsource developer on a backoffice system
+        for a digital marketing client.
+      </p>
+
+      <p>
+        Just shipped <a href="https://supaspike.com" target="_blank" rel="noopener">SupaSpike</a> —
+        a brand-deal CRM for solo creators. Phase A launched on May 3, 2026. Now in the 30-day
+        market validation window: cold DMs, refining the product based on early-user feedback.
+      </p>
+
+      <p>
+        Also building this site — `reinatt.com` — as the long-form home for everything I write.
+      </p>
+
+      <p class="text-(--color-fg-muted) text-sm">
+        Phase 1 placeholder — Founder rewrites this with the real "now" snapshot during content week.
+      </p>
+    </div>
+  </article>
+</Layout>
