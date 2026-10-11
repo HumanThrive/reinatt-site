@@ -1,0 +1,15 @@
+// Cloudflare Workers Builds deploys every push to main with this file.
+// The site is fully static, so the Worker serves the built dist/ folder and runs no server code.
+// Without this file, each build runs "astro add cloudflare", which installs the newest adapter.
+// That adapter can require a newer major version of Astro than this project uses, and the build then fails.
+{
+  // The name must match the Worker that serves reinatt.com in the Cloudflare dashboard.
+  "name": "reinatt-site",
+  "compatibility_date": "2026-10-06",
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./dist"
+  }
+}
