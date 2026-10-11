@@ -32,7 +32,6 @@ if (bar) {
   update();
 }
 
-// The menu sheet for small screens.
 const sheet = one<HTMLDialogElement>("dialog.sheet-nav");
 const openButton = one("[data-menu]");
 if (sheet && openButton) {

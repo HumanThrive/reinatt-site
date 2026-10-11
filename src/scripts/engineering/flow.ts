@@ -1,7 +1,7 @@
 import { jobSteps } from "../../data/job-steps";
 import { all, escapeHtml, one } from "./dom";
 
-// Colours one line of a step's illustration: "#" lines as comments, "$" lines as commands,
+// Colours a step's illustration line by line: "#" lines as comments, "$" lines as commands,
 // a leading "key:" as a key, and every arrow as an accent.
 function highlight(code: string): string {
   return code
