@@ -5,6 +5,15 @@ import WorkList from "../components/engineering/WorkList.astro";
 import CaseSheets from "../components/engineering/CaseSheets.astro";
 import EmailRow from "../components/engineering/EmailRow.astro";
 import SiteFoot from "../components/engineering/SiteFoot.astro";
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Rei Nuttanon",
+  jobTitle: "Senior Full-Stack Engineer",
+  url: "https://reinatt.com/",
+  sameAs: ["https://www.linkedin.com/in/reinuttanon/", "https://github.com/reinuttanon"],
+};
 ---
 
 <EngineeringLayout
@@ -12,6 +21,7 @@ import SiteFoot from "../components/engineering/SiteFoot.astro";
   description="Senior full-stack engineer. I build AI into the software businesses run on, and design the guardrails that keep it reliable."
   page="home"
   tone="ink"
+  jsonLd={person}
 >
   <CoverSprite slot="before-header" />
 
@@ -34,7 +44,7 @@ import SiteFoot from "../components/engineering/SiteFoot.astro";
         <ol class="ways">
           <li class="fade"><span class="t">Inside the product</span><span class="d">AI built into the software itself. For a factory, an on-device app that reads a machine's display and checks each reading, using a model I trained myself. <a class="link" href="#case-vision" data-case="vision">The factory case →</a></span></li>
           <li class="fade"><span class="t">In the delivery</span><span class="d">A team of AI agents I designed plans, writes and reviews my client work in parallel. <a class="link" href="/ai/">How it runs →</a></span></li>
-          <li class="fade"><span class="t">Around the agents</span><span class="d">I translate my years of experiences into AI agents and build the AI workflow that can ship things to production. <a class="link" href="/ai/#rules">The rules →</a></span></li>
+          <li class="fade"><span class="t">Around the agents</span><span class="d">I translate my years of experiences into AI agents and build the AI workflow that can ship things to production. <a class="link" href="/ai/#rules">How I govern it →</a></span></li>
         </ol>
       </div>
     </div>
@@ -87,7 +97,7 @@ import SiteFoot from "../components/engineering/SiteFoot.astro";
         <h2 class="h1 fade">Let's talk.</h2>
         <EmailRow />
         <p class="dim mt fade d2">Based in Bangkok. Working remotely since 2020, with teams in any time zone.</p>
-        <p class="links mt-l fade d3"><a class="link" href="https://www.linkedin.com/in/reinuttanon/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="link" href="https://github.com/guzzilar" target="_blank" rel="noopener">GitHub ↗</a><a class="link" href="/cv/">CV →</a></p>
+        <p class="links mt-l fade d3"><a class="link" href="https://www.linkedin.com/in/reinuttanon/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="link" href="https://github.com/reinuttanon" target="_blank" rel="noopener">GitHub ↗</a><a class="link" href="/cv/">CV →</a></p>
       </div>
     </div>
     <SiteFoot />

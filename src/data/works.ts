@@ -34,8 +34,8 @@ export const works: Work[] = [
     meta: "2026 · My own system · Bangkok",
     parts: [
       { label: "The job", text: "Run my client work with AI agents, without losing control of it." },
-      { label: "What I built", text: "A crew of AI agents with written roles. Every job on its own branch. Every decision logged with the options it turned down. One gate: me." },
-      { label: "What happened", text: "It runs my client delivery every day. 1,227 commits in its first three months." },
+      { label: "What I built", text: "A team of AI agents on Claude Code that plan, write and review production code in parallel, each in its own role." },
+      { label: "What happened", text: "It runs my client delivery every day." },
       { label: "Built with", text: "Claude Code · Git worktrees · Python · Markdown" },
     ],
     links: [
@@ -50,8 +50,8 @@ export const works: Work[] = [
     meta: "2025 · Client project",
     parts: [
       { label: "The job", text: "Read a machine's results off its screen, and check every part against the limits for that product." },
-      { label: "What I built", text: "A camera app for a Raspberry Pi 5. A YOLOv8 model, trained on images I labelled, finds each reading. OCR reads it. The app checks it against the product's limits and sounds an alert." },
-      { label: "What it shows", text: "AI running inside the software, on the factory floor, rather than in a chat window." },
+      { label: "What I built", text: "An on-device camera app. A model I trained on images I labelled finds each reading, OCR reads it, and the app checks it against the product's limits." },
+      { label: "What it shows", text: "AI built into the software itself, rather than in a chat window." },
       { label: "Built with", text: "Python · YOLOv8 · EasyOCR · PyTorch · OpenCV · Label Studio · Raspberry Pi 5" },
     ],
     links: [],
@@ -64,10 +64,10 @@ export const works: Work[] = [
     year: "2025–",
     meta: "2025 – now · Independent · Bangkok",
     parts: [
-      { label: "The job", text: "Be a business's only software partner, from the first conversation to daily use." },
+      { label: "The job", text: "Be a business's software partner, from the first conversation to daily use." },
       { label: "What I built", text: "The back office the staff run the business from. A customer app that opens inside LINE. The API behind both." },
-      { label: "How I build it", text: "With AI. My agents write and review the code, and I approve every change. I also help the team run AI on their own machines." },
-      { label: "What happened", text: "The team works on it every day. I've built and shipped it alone since January 2025." },
+      { label: "How I build it", text: "With AI. A team of AI agents I designed writes and reviews the code. I also help the team run AI on their own machines." },
+      { label: "What happened", text: "The team runs the business on it every day. The daily data reconciliation the operators did by hand went from hours to a minute. I've designed and built it since January 2025." },
       { label: "Built with", text: "Laravel · PHP · PostgreSQL · Nuxt · Vue · Tailwind · LINE LIFF · Docker" },
     ],
     links: [],
