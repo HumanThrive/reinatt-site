@@ -1,0 +1,39 @@
+---
+import type { Page } from "./page";
+
+interface Props {
+  page: Page;
+  /** The header's tone before any scrolling: the tone of the page's first section. */
+  tone: "ink" | "paper";
+}
+
+const { page, tone } = Astro.props;
+
+// On the home page the section links stay in-page anchors. Elsewhere they lead back to the home page.
+const home = page === "home" ? "" : "/";
+const nav = [
+  { href: `${home}#work`, label: "Work", current: false },
+  { href: "/ai/", label: "AI", current: page === "ai" },
+  { href: "/cv/", label: "CV", current: page === "cv" },
+  { href: `${home}#contact`, label: "Contact", current: false },
+];
+---
+
+<header class="bar" data-tone={tone} data-bar>
+  <div class="grid">
+    <a class="name" href="/">Rei Nuttanon</a>
+    <nav aria-label="Main">{nav.map((item) => <a href={item.href} aria-current={item.current ? "page" : undefined}>{item.label}</a>)}</nav>
+    <button class="menu-btn" type="button" data-menu aria-haspopup="dialog">Menu</button>
+  </div>
+</header>
+<dialog class="sheet-nav" aria-label="Menu">
+  <div class="sheet-nav-inner">
+    <div class="sheet-nav-top"><span>Rei Nuttanon</span><button class="menu-btn" type="button" data-menu-close>Close</button></div>
+    <nav aria-label="Menu">{nav.map((item) => <a href={item.href} data-menu-link>{item.label}</a>)}</nav>
+    <p class="foot-note">Bangkok · working with teams anywhere</p>
+  </div>
+</dialog>
+
+<script>
+  import "../../scripts/engineering/header";
+</script>

@@ -1,0 +1,11 @@
+---
+import { works } from "../../data/works";
+---
+
+<ol class="tracks">
+  {
+    works.map((work) => (
+      <li class="track"><a href={`#case-${work.key}`} data-case={work.key}><span class="thumb"><svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><use href={`#cv-${work.key}`} /></svg></span><span class="title">{work.title}</span><span class="desc">{work.summary}</span><span class="yr">{work.year}</span></a></li>
+    ))
+  }
+</ol>

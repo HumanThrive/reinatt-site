@@ -1,0 +1,134 @@
+---
+import EngineeringLayout from "../layouts/EngineeringLayout.astro";
+import JobFlow from "../components/engineering/JobFlow.astro";
+import EmailRow from "../components/engineering/EmailRow.astro";
+import SiteFoot from "../components/engineering/SiteFoot.astro";
+---
+
+<EngineeringLayout
+  title="AI — Rei Nuttanon"
+  description="AI agents build my client work. A system I designed keeps them reliable: written roles, one branch per job, and one gate."
+  page="ai"
+  tone="ink"
+>
+
+  <section class="sec ink hero lucy-hero" data-tone="ink">
+    <div class="grid">
+      <div class="rail"><p class="label fade">AI</p><p class="label faint fade">Integration · governance</p></div>
+      <div class="body">
+        <h1 class="h1 fade">AI agents build my client work. A system I designed keeps them reliable.</h1>
+        <p class="lead fade d1">Lucy is that system. I designed it in July 2026, and it runs my client delivery every day.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" data-tone="paper">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">01</span>Why</p></div>
+      <div class="body">
+        <h2 class="h2 fade">One chat can't hold a business.</h2>
+        <p class="lead measure mt fade d1">I needed agents that focus on one task and still see the whole company. So I organised them the way a company is organised.</p>
+        <p class="mt fade d2"><a class="link" href="https://www.linkedin.com/pulse/3-stages-how-i-actually-work-ai-rei-nuttanon-7trpc" target="_blank" rel="noopener">The story, on LinkedIn ↗</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ink" data-tone="ink">
+    <div class="grid">
+      <div class="rail"><p class="label"><span class="idx">02</span>The crew</p></div>
+      <div class="body">
+        <h2 class="h2 fade">Ten roles, one gate.</h2>
+        <figure class="crew-fig ai-fig mt-l fade d1">
+          <svg viewBox="0 0 600 520" role="img" aria-labelledby="crew-ai-t"><title id="crew-ai-t">Lucy's crew: ten seats routed by Lucy, with one gate, me.</title><line class="seam" x1="150" y1="112" x2="452" y2="100"/><line class="seam" x1="452" y1="100" x2="534" y2="226"/><line class="seam" x1="150" y1="112" x2="344" y2="452"/><line class="seam" x1="168" y1="428" x2="74" y2="314"/><line class="seam" x1="74" y1="314" x2="64" y2="182"/><line class="seam" x1="150" y1="112" x2="226" y2="372"/><line class="edge" x1="300" y1="166" x2="150" y2="112"/><line class="edge" x1="300" y1="166" x2="452" y2="100"/><line class="edge" x1="300" y1="166" x2="534" y2="226"/><line class="edge" x1="300" y1="166" x2="494" y2="376"/><line class="edge" x1="300" y1="166" x2="344" y2="452"/><line class="edge" x1="300" y1="166" x2="168" y2="428"/><line class="edge" x1="300" y1="166" x2="74" y2="314"/><line class="edge" x1="300" y1="166" x2="64" y2="182"/><line class="edge" x1="300" y1="166" x2="226" y2="372"/><line class="gate-edge" x1="300" y1="166" x2="300" y2="286"/>
+            <g class="node hub" tabindex="0" data-role="Lucy: reads the board and routes each job to the right mind."><circle cx="300" cy="166" r="5.5"/><text x="300" y="152" text-anchor="middle">Lucy</text></g>
+            <g class="node" tabindex="0" data-role="CEO: what to build, how it goes to market, and when to stop."><circle cx="150" cy="112" r="4"/><text x="150" y="98" text-anchor="middle">CEO</text></g>
+            <g class="node" tabindex="0" data-role="Product Lead: what the user is really trying to get done."><circle cx="452" cy="100" r="4"/><text x="452" y="86" text-anchor="middle">Product Lead</text></g>
+            <g class="node" tabindex="0" data-role="Lead Dev: how to build it so it runs in production."><circle cx="534" cy="226" r="4"/><text x="522" y="230" text-anchor="end">Lead Dev</text></g>
+            <g class="node" tabindex="0" data-role="System Architect: keeps the roles and the rules honest."><circle cx="494" cy="376" r="4"/><text x="482" y="380" text-anchor="end">System Architect</text></g>
+            <g class="node" tabindex="0" data-role="Project Manager: work done against value delivered."><circle cx="344" cy="452" r="4"/><text x="344" y="476" text-anchor="middle">Project Manager</text></g>
+            <g class="node" tabindex="0" data-role="Marketing Lead: who it's for, and where they are."><circle cx="168" cy="428" r="4"/><text x="168" y="452" text-anchor="middle">Marketing Lead</text></g>
+            <g class="node" tabindex="0" data-role="Creative Director: how the work looks, sounds and reads."><circle cx="74" cy="314" r="4"/><text x="86" y="318" text-anchor="start">Creative Director</text></g>
+            <g class="node" tabindex="0" data-role="Video Editor: rebuilds a channel's look on new footage."><circle cx="64" cy="182" r="4"/><text x="76" y="186" text-anchor="start">Video Editor</text></g>
+            <g class="node" tabindex="0" data-role="Financial Advisor: a second opinion before money moves."><circle cx="226" cy="372" r="4"/><text x="226" y="396" text-anchor="middle">Financial Advisor</text></g>
+            <g class="node gate" tabindex="0" data-role="Me: the one gate. Nothing ships until I accept it."><circle cx="300" cy="286" r="7"/><text x="300" y="314" text-anchor="middle">Me · the gate</text></g>
+          </svg>
+          <figcaption class="crew-cap" data-crew-cap data-default="Lucy routes the work. The roles decide. I accept.">Lucy routes the work. The roles decide. I accept.</figcaption>
+        </figure>
+        <ul class="crew-list fade d1">
+          <li><span class="who">Lucy</span><span class="what">Reads the board and routes each job to the right mind.</span></li>
+          <li><span class="who">CEO</span><span class="what">What to build, how it goes to market, and when to stop.</span></li>
+          <li><span class="who">Product Lead</span><span class="what">What the user is really trying to get done.</span></li>
+          <li><span class="who">Lead Dev</span><span class="what">How to build it so it runs in production.</span></li>
+          <li><span class="who">System Architect</span><span class="what">Keeps the roles and the rules honest.</span></li>
+          <li><span class="who">Project Manager</span><span class="what">Work done against value delivered.</span></li>
+          <li><span class="who">Marketing Lead</span><span class="what">Who it's for, and where they are.</span></li>
+          <li><span class="who">Creative Director</span><span class="what">How the work looks, sounds and reads.</span></li>
+          <li><span class="who">Video Editor</span><span class="what">Rebuilds a channel's look on new footage.</span></li>
+          <li><span class="who">Financial Advisor</span><span class="what">A second opinion before money moves.</span></li>
+          <li class="me"><span class="who">Me</span><span class="what">The one gate. Nothing ships until I accept it.</span></li>
+        </ul>
+        {/* This script stays after the list. Between the figure and the list it would break the ".ai-fig + .crew-list" spacing rule. */}
+        <script>
+          import "../scripts/engineering/crew";
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" data-tone="paper">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">03</span>How a job moves</p><p class="small faint note">Six steps. Click one. The examples are illustrations, not client work.</p></div>
+      <div class="body">
+        <JobFlow />
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" id="rules" data-tone="paper" style="padding-top:0">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">04</span>Rules</p></div>
+      <div class="body">
+        <h2 class="h2 fade">Three rules it never breaks.</h2>
+        <ol class="rule-list">
+          <li class="fade"><span class="t">One gate, held by a person.</span><span class="not">Not agents approving their own work.</span></li>
+          <li class="fade d1"><span class="t">One branch per job.</span><span class="not">Not two agents in one working copy.</span></li>
+          <li class="fade d2"><span class="t">Decisions keep what they rejected.</span><span class="not">Not a reason lost when a chat ends.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" data-tone="paper" style="padding-top:0">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">05</span>In use</p><p class="small faint note">Commits to Lucy's repository, July to September 2026.</p></div>
+      <div class="body">
+        <div class="use-nums fade"><div><b>1,227</b><span>commits in its first three months</span></div><div><b>79</b><span>of 92 days with work in it</span></div><div><b>389</b><span>jobs typed and tracked</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" data-tone="paper" style="padding-top:0">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">06</span>In the product</p></div>
+      <div class="body">
+        <h2 class="h2 fade">AI inside the software, too.</h2>
+        <p class="lead measure mt fade d1">In 2025 I built a vision system for a factory line. A YOLOv8 model, trained on images I labelled, finds each reading on a machine's screen. OCR reads it, and the app checks it against the product's limits. It runs on a Raspberry Pi 5.</p>
+        <p class="mt fade d2"><a class="link" href="/#case-vision">The factory case →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper contact" id="contact" data-tone="paper">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">07</span>Contact</p></div>
+      <div class="body">
+        <h2 class="h1 fade">I can show it running.</h2>
+        <EmailRow />
+        <p class="dim mt fade d2">Ten minutes, on a call.</p>
+        <p class="links mt-l fade d3"><a class="link" href="/">Back to the start →</a><a class="link" href="/cv/">CV →</a></p>
+      </div>
+    </div>
+    <SiteFoot />
+  </section>
+  <div class="toast" role="status" aria-live="polite" slot="after-main"></div>
+</EngineeringLayout>

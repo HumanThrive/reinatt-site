@@ -1,0 +1,28 @@
+---
+import { works } from "../../data/works";
+---
+
+<dialog class="case" aria-labelledby="case-title"><button class="case-close" type="button" data-close>Close</button><div class="case-inner"></div></dialog>
+{
+  works.map((work) => (
+    <template id={`tpl-${work.key}`}>
+      <div class="case-cover"><svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><use href={`#cv-${work.key}`} /></svg></div>
+      <div class="case-body">
+        <p class="case-meta">{work.meta}</p>
+        <h2 id="case-title">{work.title}</h2>
+        {work.parts.map((part) => (
+          <div class="case-part"><span class="label">{part.label}</span><p>{part.text}</p></div>
+        ))}
+        {work.links.length > 0 && (
+          <p class="case-links">{work.links.map((link) => (link.external ? <a class="link" href={link.href} target="_blank" rel="noopener">{link.text}</a> : <a class="link" href={link.href}>{link.text}</a>))}</p>
+        )}
+        {work.note && <p class="case-note">{work.note}</p>}
+        <div class="case-nav"><button type="button" data-prev></button><button type="button" class="next" data-next></button></div>
+      </div>
+    </template>
+  ))
+}
+
+<script>
+  import "../../scripts/engineering/work";
+</script>

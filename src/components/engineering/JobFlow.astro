@@ -1,0 +1,18 @@
+---
+import { jobSteps } from "../../data/job-steps";
+
+const first = jobSteps[0];
+---
+
+<div class="flow-words fade" role="tablist" aria-label="The six steps of a job">
+  {jobSteps.map((step, i) => <button class="flow-word" type="button" role="tab" aria-selected={i === 0 ? "true" : "false"}><span class="i">{String(i + 1).padStart(2, "0")}</span>{step.key}</button>)}
+</div>
+<div class="flow-panel fade d1" role="tabpanel" aria-live="polite">
+  <div class="txt"><p class="label faint" data-step-n>Step 1 of {jobSteps.length}</p><p class="lead mt-s" data-step-text>{first?.text}</p></div>
+  <pre class="flow-code" data-step-code aria-label="An illustration"></pre>
+</div>
+<p class="flow-controls fade d2"><button type="button" data-play>Play all six</button></p>
+
+<script>
+  import "../../scripts/engineering/flow";
+</script>

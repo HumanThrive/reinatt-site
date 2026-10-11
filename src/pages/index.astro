@@ -1,115 +1,99 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-
-const showDrafts = !import.meta.env.PROD;
-
-const allWriting = await getCollection("writing", ({ data }) => showDrafts || !data.draft);
-const recentWriting = allWriting
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 5);
-
-const allWork = await getCollection("work", ({ data }) => showDrafts || !data.draft);
-const featuredWork = allWork
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
-
-const dateFmt = (d: Date) =>
-  d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-
-const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Rei Nuttanon",
-  "alternateName": "Rei",
-  "url": "https://reinatt.com",
-  "sameAs": [
-    "https://x.com/_reinatt",
-    "https://instagram.com/_reinatt",
-    "https://github.com/HumanThrive",
-  ],
-  "jobTitle": "Full-stack developer",
-  "description":
-    "Thai full-stack developer based in Bangkok. Builder, fighter, creator. Previously ran an idol management company in Vietnam.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bangkok",
-    "addressCountry": "TH",
-  },
-  "knowsLanguage": ["en", "th", "vi", "ja"],
-  "nationality": { "@type": "Country", "name": "Thailand" },
-};
+import EngineeringLayout from "../layouts/EngineeringLayout.astro";
+import CoverSprite from "../components/engineering/CoverSprite.astro";
+import WorkList from "../components/engineering/WorkList.astro";
+import CaseSheets from "../components/engineering/CaseSheets.astro";
+import EmailRow from "../components/engineering/EmailRow.astro";
+import SiteFoot from "../components/engineering/SiteFoot.astro";
 ---
 
-<Layout title="Rei" jsonLd={personSchema}>
-  <!-- <section class="space-y-4">
-    <h1 class="text-3xl font-medium tracking-tight">Rei</h1>
-    <p class="text-(--color-fg) leading-relaxed">
-      Builder. Fighter. Creator. A Thai full-stack dev who ran an idol management company in Vietnam,
-      came back broken, and is rebuilding. Currently in Bangkok.
-    </p>
-  </section> -->
+<EngineeringLayout
+  title="Rei Nuttanon — Engineering"
+  description="Senior full-stack engineer. I build AI into the software businesses run on, and design the guardrails that keep it reliable."
+  page="home"
+  tone="ink"
+>
+  <CoverSprite slot="before-header" />
 
-  {
-    recentWriting.length > 0 && (
-      <section class="mt-14 space-y-4">
-        <div class="flex items-baseline justify-between">
-          <h2 class="text-lg font-medium">Writing</h2>
-          <a href="/writing" class="text-sm no-underline text-(--color-fg-muted) hover:text-(--color-fg)">
-            All →
-          </a>
-        </div>
-        <ul class="space-y-3">
-          {recentWriting.map((post) => (
-            <li>
-              <a href={`/writing/${post.id}`} class="no-underline group block">
-                <div class="flex items-baseline justify-between gap-4">
-                  <span class="font-medium group-hover:underline underline-offset-2 decoration-(--color-fg)">
-                    {post.data.title}
-                  </span>
-                  <time
-                    datetime={post.data.date.toISOString()}
-                    class="text-sm text-(--color-fg-muted) shrink-0"
-                  >
-                    {dateFmt(post.data.date)}
-                  </time>
-                </div>
-                {post.data.excerpt && (
-                  <p class="text-sm text-(--color-fg-muted) mt-1 line-clamp-2">{post.data.excerpt}</p>
-                )}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
+  <section class="sec ink hero" data-tone="ink">
+    <div class="grid">
+      <div class="rail"><p class="label fade">Senior full-stack engineer</p><p class="label faint fade">AI integration</p><p class="label faint fade">Agent governance</p><p class="label faint fade">Bangkok · UTC+7</p></div>
+      <div class="body">
+        <h1 class="h1 fade">I build AI into the software businesses run on.</h1>
+        <p class="lead fade d1">Engineer since 2011, from payment gateways to operations platforms. Now I design how AI works inside that software, and the guardrails that make it safe to rely on.</p>
+        <p class="aside-note fade d2"><span class="sq" aria-hidden="true"></span>Yes, this site is built by my AI too. <a class="link" href="/ai/">How it works →</a></p>
+      </div>
+    </div>
+  </section>
 
-  {
-    featuredWork.length > 0 && (
-      <section class="mt-14 space-y-4">
-        <div class="flex items-baseline justify-between">
-          <h2 class="text-lg font-medium">Selected work</h2>
-          <a href="/work" class="text-sm no-underline text-(--color-fg-muted) hover:text-(--color-fg)">
-            All →
-          </a>
+  <section class="sec ink" data-tone="ink" style="padding-top:0">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">01</span>AI</p></div>
+      <div class="body">
+        <h2 class="h2 fade">AI, built in and governed.</h2>
+        <ol class="ways">
+          <li class="fade"><span class="t">Inside the product</span><span class="d">AI built into the software itself. For a factory, an on-device app that reads a machine's display and checks each reading, using a model I trained myself. <a class="link" href="#case-vision" data-case="vision">The factory case →</a></span></li>
+          <li class="fade"><span class="t">In the delivery</span><span class="d">A team of AI agents I designed plans, writes and reviews my client work in parallel. <a class="link" href="/ai/">How it runs →</a></span></li>
+          <li class="fade"><span class="t">Around the agents</span><span class="d">I translate my years of experiences into AI agents and build the AI workflow that can ship things to production. <a class="link" href="/ai/#rules">The rules →</a></span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" id="proof" data-tone="paper">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">02</span>Proof</p></div>
+      <div class="body proof-row">
+        <p class="num fade" aria-label="2,000 plus">2,000+</p>
+        <div class="proof-text fade d1">
+          <p class="lead">online stores take payments through a plugin I built.</p>
+          <p class="small dim mt-s">It's open source, and I'm its top contributor. <a class="link" href="https://github.com/omise/omise-woocommerce/graphs/contributors" target="_blank" rel="noopener">Check it on GitHub ↗</a></p>
         </div>
-        <ul class="space-y-3">
-          {featuredWork.map((entry) => (
-            <li>
-              <a href={`/work/${entry.id}`} class="no-underline group block">
-                <div class="flex items-baseline justify-between gap-4">
-                  <span class="font-medium group-hover:underline underline-offset-2 decoration-(--color-fg)">
-                    {entry.data.title}
-                  </span>
-                  <span class="text-sm text-(--color-fg-muted) shrink-0">{entry.data.period}</span>
-                </div>
-                <p class="text-sm text-(--color-fg-muted) mt-1 line-clamp-2">{entry.data.summary}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
-</Layout>
+      </div>
+    </div>
+    <div class="grid mt-xl">
+      <div class="rail"><p class="label"><span class="idx"></span>Today</p></div>
+      <div class="body"><p class="lead measure fade">Since 2025, a business has run its daily operations on software I designed and built.</p></div>
+    </div>
+  </section>
+
+  <section class="sec paper" data-tone="paper" style="padding-top:0">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">03</span>Approach</p></div>
+      <div class="body">
+        <h2 class="h2 fade">I start with people, not code.</h2>
+        <ol class="list">
+          <li class="fade"><span class="n">1</span><span>I sit with the people who run it.</span></li>
+          <li class="fade d1"><span class="n">2</span><span>I find where the work gets stuck.</span></li>
+          <li class="fade d2"><span class="n">3</span><span>I redesign how the work gets done, and take part in the decision.</span></li>
+          <li class="fade d3"><span class="n">4</span><span>I build it, and stay until the team runs on it.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" id="work" data-tone="paper" style="padding-top:0">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">04</span>Selected work</p><p class="small faint note">Six works, 2013 to now. Open one for the story.</p></div>
+      <div class="body"><WorkList /></div>
+    </div>
+    <div class="cover-follow" aria-hidden="true"></div>
+  </section>
+
+  <section class="sec paper contact" id="contact" data-tone="paper">
+    <div class="grid rule">
+      <div class="rail"><p class="label"><span class="idx">05</span>Contact</p></div>
+      <div class="body">
+        <h2 class="h1 fade">Let's talk.</h2>
+        <EmailRow />
+        <p class="dim mt fade d2">Based in Bangkok. Working remotely since 2020, with teams in any time zone.</p>
+        <p class="links mt-l fade d3"><a class="link" href="https://www.linkedin.com/in/reinuttanon/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="link" href="https://github.com/guzzilar" target="_blank" rel="noopener">GitHub ↗</a><a class="link" href="/cv/">CV →</a></p>
+      </div>
+    </div>
+    <SiteFoot />
+  </section>
+  <Fragment slot="after-main">
+    <CaseSheets />
+    <div class="toast" role="status" aria-live="polite"></div>
+  </Fragment>
+</EngineeringLayout>
