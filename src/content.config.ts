@@ -9,6 +9,11 @@ const writing = defineCollection({
     excerpt: z.string().optional(),
     draft: z.boolean().default(false),
     updatedDate: z.coerce.date().optional(),
+    /** Where the article was first published, when that is not this site. */
+    originalUrl: z.string().url().optional(),
+    /** A 16:9 cover (1280x720) in public/, shown as a thumbnail in the article lists. */
+    cover: z.string().optional(),
+    coverAlt: z.string().optional(),
   }),
 });
 

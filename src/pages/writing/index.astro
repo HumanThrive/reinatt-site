@@ -1,5 +1,6 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import EngineeringLayout from "../../layouts/EngineeringLayout.astro";
+import SiteFoot from "../../components/engineering/SiteFoot.astro";
 import { getCollection } from "astro:content";
 
 const showDrafts = !import.meta.env.PROD;
@@ -17,43 +18,43 @@ const readingMinutes = (body: string) => {
 };
 ---
 
-<Layout title="Writing — Rei" description="Posts by Rei Nuttanon — building, operating, and surviving small businesses from a non-Western perspective.">
-  <section class="space-y-2">
-    <h1 class="text-3xl font-medium tracking-tight">Writing</h1>
+<EngineeringLayout
+  title="Writing — Rei Nuttanon"
+  description="Articles by Rei Nuttanon on working with AI agents: how the work is organised, governed and handed from one session to the next."
+  page="writing"
+  tone="paper"
+  bodyClass="paper"
+>
+  <section class="paper writing-page" data-tone="paper">
+    <div class="grid">
+      <div class="rail"><p class="label">Writing</p></div>
+      <div class="body">
+        <h1 class="h2">Writing</h1>
+        {
+          posts.length === 0 ? (
+            <p class="dim mt">Nothing published here yet.</p>
+          ) : (
+            <ol class="posts">
+              {posts.map((post) => (
+                <li>
+                  <a href={`/writing/${post.id}`} class={post.data.cover ? "has-cover" : undefined}>
+                    {post.data.cover && (
+                      <img class="post-cover" src={post.data.cover} alt={post.data.coverAlt ?? ""} width="1280" height="720" loading="lazy" decoding="async" />
+                    )}
+                    <span class="post-title">{post.data.title}</span>
+                    <time class="post-date" datetime={post.data.date.toISOString()}>{dateFmt(post.data.date)}</time>
+                    {post.data.excerpt && <span class="post-desc">{post.data.excerpt}</span>}
+                    <span class="post-meta">
+                      {readingMinutes(post.body ?? "")} min read{post.data.draft && " · draft"}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          )
+        }
+      </div>
+    </div>
+    <SiteFoot />
   </section>
-
-  {
-    posts.length === 0 ? (
-      <p class="mt-10 text-(--color-fg-muted)">
-        Empty for now. First posts land this week.
-      </p>
-    ) : (
-      <ul class="mt-10 space-y-6">
-        {posts.map((post) => (
-          <li>
-            <a href={`/writing/${post.id}`} class="no-underline group block">
-              <div class="flex items-baseline justify-between gap-4">
-                <h2 class="font-medium text-lg group-hover:underline underline-offset-2 decoration-(--color-fg)">
-                  {post.data.title}
-                </h2>
-                <time
-                  datetime={post.data.date.toISOString()}
-                  class="text-sm text-(--color-fg-muted) shrink-0"
-                >
-                  {dateFmt(post.data.date)}
-                </time>
-              </div>
-              <div class="flex items-baseline gap-3 mt-1 text-sm text-(--color-fg-muted)">
-                <span>{readingMinutes(post.body ?? "")} min read</span>
-                {post.data.draft && <span class="text-amber-600">draft</span>}
-              </div>
-              {post.data.excerpt && (
-                <p class="text-sm text-(--color-fg-muted) mt-2 leading-relaxed">{post.data.excerpt}</p>
-              )}
-            </a>
-          </li>
-        ))}
-      </ul>
-    )
-  }
-</Layout>
+</EngineeringLayout>

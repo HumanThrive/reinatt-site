@@ -331,3 +331,70 @@ dialog.case[open] { animation: rise 0.45s var(--ease); }
   .cv-role:has(.cv-sub) { break-inside: auto; }
 }
 .cv-note { margin-top: 10px; color: var(--ink-3); font-size: 0.9rem; }
+
+/* ---------- writing: the list and the article pages ---------- */
+.writing-page { padding-block: 112px 0; min-height: 100svh; }
+.writing-page .rail .note { margin-top: 10px; }
+.writing-page .rail .plain { text-decoration: none; }
+.writing-page .rail .plain:hover { text-decoration: underline; text-underline-offset: 0.24em; }
+.posts { margin-top: 40px; border-bottom: 1px solid var(--rule); }
+.posts li + li { border-top: 1px solid var(--rule); }
+.posts a { display: grid; grid-template-columns: 1fr auto; column-gap: var(--gap); row-gap: 6px; padding: 24px 0; text-decoration: none; }
+.post-title { font-size: clamp(1.25rem, 1rem + 0.8vw, 1.6rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; transition: color 0.25s; }
+.posts a:hover .post-title, .posts a:focus-visible .post-title { color: var(--ember-text); }
+.post-date, .post-meta { color: var(--ink-3); font-size: 0.9rem; white-space: nowrap; }
+.post-date { text-align: right; }
+.post-desc { grid-column: 1 / -1; color: var(--ink-2); font-size: 0.95rem; line-height: 1.5; max-width: 36rem; }
+.post-meta { grid-column: 1 / -1; }
+@media (max-width: 600px) { .posts a { grid-template-columns: 1fr; } .post-date { text-align: left; order: 2; } }
+
+.article-title { max-width: 18em; overflow-wrap: break-word; font-size: clamp(1.6rem, 1.1rem + 1.7vw, 2.5rem); }
+.prose { margin-top: 40px; max-width: 640px; font-size: 1.125rem; line-height: 1.7; overflow-wrap: break-word; }
+.prose > * + * { margin-top: 1.15em; }
+.prose h2 { margin-top: 2.2em; font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.85rem); line-height: 1.2; letter-spacing: -0.022em; font-weight: 500; }
+.prose h3 { margin-top: 1.9em; font-size: 1.2rem; line-height: 1.3; letter-spacing: -0.014em; font-weight: 500; }
+.prose h2 + *, .prose h3 + * { margin-top: 0.7em; }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: 0.4em; }
+.prose li::marker { color: var(--ink-3); }
+.prose li > ul, .prose li > ol { margin-top: 0.4em; }
+.prose strong { font-weight: 600; }
+.prose a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.24em; transition: text-decoration-color 0.25s; }
+.prose a:hover { text-decoration-color: var(--ember); }
+.prose code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.86em; background: var(--paper-2); padding: 0.1em 0.35em; }
+.prose pre { background: var(--ink); color: var(--night-ink); padding: 18px 20px; overflow-x: auto; font-size: 0.85rem; line-height: 1.7; }
+.prose pre code { background: none; padding: 0; font-size: inherit; }
+.prose hr { border: 0; height: 1px; background: var(--rule); margin-block: 2.4em; }
+.prose blockquote { margin-left: 0; padding-left: 1.1em; border-left: 2px solid var(--rule); color: var(--ink-2); }
+.prose img { max-width: 100%; height: auto; }
+/* The opening "First published on LinkedIn" line of each article */
+.prose > p:first-child { margin-top: 0; font-size: 0.9rem; line-height: 1.55; color: var(--ink-3); }
+.original { margin-top: 48px; max-width: 640px; }
+.post-nav { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 24px; }
+.post-nav a { display: block; max-width: 46%; text-decoration: none; }
+.post-nav a b { display: block; margin-top: 4px; font-weight: 500; font-size: 1.05rem; line-height: 1.3; letter-spacing: -0.01em; transition: color 0.25s; }
+.post-nav a:hover b { color: var(--ember-text); }
+.post-nav .next { text-align: right; margin-left: auto; }
+@media (max-width: 600px) { .post-nav { flex-direction: column; } .post-nav a { max-width: none; } .post-nav .next { text-align: left; margin-left: 0; } }
+
+/* article covers: thumbnails (16:9 sources) in the writing list and the AI page's featured articles */
+.post-cover, .ways-cover img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--paper-2); }
+.posts a.has-cover { grid-template-columns: minmax(0, 220px) 1fr auto; align-items: start; column-gap: var(--gap); }
+.posts a.has-cover .post-cover { grid-column: 1; grid-row: 1 / span 3; }
+.posts a.has-cover .post-title { grid-column: 2; }
+.posts a.has-cover .post-date { grid-column: 3; }
+.posts a.has-cover .post-desc, .posts a.has-cover .post-meta { grid-column: 2 / -1; }
+@media (max-width: 600px) {
+  .posts a.has-cover { grid-template-columns: 1fr; }
+  .posts a.has-cover .post-cover, .posts a.has-cover .post-title, .posts a.has-cover .post-date, .posts a.has-cover .post-desc, .posts a.has-cover .post-meta { grid-column: 1; grid-row: auto; }
+  .posts a.has-cover .post-cover { margin-bottom: 8px; }
+}
+.ways li.has-cover .ways-cover { grid-column: 1 / span 3; grid-row: 1 / span 2; align-self: start; }
+.ways li.has-cover .t { grid-column: 4 / span 6; }
+.ways li.has-cover .d { grid-column: 4 / span 6; grid-row: 2; margin-top: 6px; }
+@media (max-width: 860px) {
+  .ways li.has-cover .ways-cover, .ways li.has-cover .t, .ways li.has-cover .d { grid-column: 1; grid-row: auto; margin-top: 0; }
+  .ways li.has-cover .ways-cover { margin-bottom: 8px; max-width: 420px; }
+}
