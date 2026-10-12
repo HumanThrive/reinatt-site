@@ -35,7 +35,7 @@ export const works: Work[] = [
     parts: [
       { label: "The job", text: "Run my client work with AI agents, without losing control of it." },
       { label: "What I built", text: "A team of AI agents on Claude Code that plan, write and review production code in parallel, each in its own role." },
-      { label: "What happened", text: "It runs my client delivery every day." },
+      { label: "What happened", text: "I use it to deliver client work every day." },
       { label: "Built with", text: "Claude Code · Git worktrees · Python · Markdown" },
     ],
     links: [
