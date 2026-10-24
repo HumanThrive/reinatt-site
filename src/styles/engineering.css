@@ -273,11 +273,17 @@ dialog.case[open] { animation: rise 0.45s var(--ease); }
 .cv-actions button { background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 0.24em; font-size: 0.95rem; }
 .cv-head { margin-top: 40px; }
 .cv-head h1 { font-size: clamp(2.2rem, 1.4rem + 2.6vw, 3.4rem); line-height: 1.04; letter-spacing: -0.035em; font-weight: 500; }
-.cv-head .role { margin-top: 8px; font-size: 1.1rem; color: var(--ink-2); }
-.cv-head .contact-line { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 0.9rem; color: var(--ink-2); }
+.cv-head .role { margin-top: 2px; font-size: 1.1rem; line-height: 1.3; color: var(--ink-2); }
+.cv-head .contact-line { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 0.9rem; color: var(--ink-2); }
 .cv-head .contact-line a { text-decoration: none; }
-.cv-block { margin-top: 40px; }
-.cv-block > .label { color: var(--ink-3); margin-bottom: 12px; }
+.cv-block { margin-top: 44px; }
+/* Section titles are larger, darker and ruled, so each section starts where the eye can find it */
+.cv-block > .label { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.1em; color: var(--ink); padding-bottom: 6px; border-bottom: 1.5px solid var(--ink); margin-bottom: 12px; }
+.cv .summary + .summary { margin-top: 8px; }
+.cv-avail { margin-top: 8px; font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+/* Experience tracks: one level below the section title, one above the roles */
+.cv-track + .cv-track { margin-top: 24px; }
+.cv-track-name { font-size: 0.78rem; line-height: 1.4; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ember-text); padding-bottom: 8px; }
 .cv-role { padding: 14px 0; border-top: 1px solid var(--rule); break-inside: avoid; }
 .cv-role .r1 { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; align-items: baseline; }
 .cv-role h3 { font-size: 1.05rem; font-weight: 500; letter-spacing: -0.01em; }
@@ -299,8 +305,9 @@ dialog.case[open] { animation: rise 0.45s var(--ease); }
 
 /* ---------- print (the CV) ---------- */
 @media print {
-  :root { --paper: #fff !important; --ink: #000 !important; --ink-2: #222 !important; --ink-3: #555 !important; --rule: #ccc !important; }
-  body { background: #fff; font-size: 10.5pt; }
+  /* Print in Helvetica Neue: Chrome embeds the web font so that Apple's PDF reader splits its words apart */
+  :root { --font: "Helvetica Neue", Helvetica, Arial, sans-serif !important; --paper: #fff !important; --ink: #000 !important; --ink-2: #222 !important; --ink-3: #555 !important; --rule: #ccc !important; }
+  body { background: #fff; font-size: 10.5pt; line-height: 1.42; }
   .bar, .cv-actions, .toast, .skip { display: none !important; }
   .cv-page { padding: 0; }
   .grid { padding: 0; max-width: none; }
@@ -310,27 +317,42 @@ dialog.case[open] { animation: rise 0.45s var(--ease); }
   html { font-size: 13px; }
   .cv-head { margin-top: 0; }
   .cv-head h1 { font-size: 2rem; }
-  .cv-block { margin-top: 12px; }
-  .cv-block > .label { break-after: avoid; }
+  .cv-head h1 { line-height: 1; }
+  .cv-head .role { margin-top: 0; line-height: 1.25; }
+  .cv-head .contact-line { margin-top: 7.6px; }
+  .cv-block { margin-top: 14px; }
+  .cv-block > .label { font-size: 1rem; padding-bottom: 4px; margin-bottom: 6px; break-after: avoid; }
+  .cv-avail { margin-top: 4px; }
+  .cv-track + .cv-track { margin-top: 10px; }
+  .cv-track-name { padding-bottom: 2px; break-after: avoid; }
   .cv .summary { font-size: 1rem; max-width: none; }
   .cv-role { padding: 6px 0; break-inside: auto; }
   .cv-role .r1, .cv-role .where { break-after: avoid; }
   .cv-role ul { display: block; }
-  .cv-role li { break-inside: avoid; margin-top: 2px; }
+  .cv-role li { break-inside: avoid; margin-top: 1px; }
   .cv-cols .cv-line { break-inside: avoid; }
-  @page { size: A4; margin: 14mm; }
+  /* The page draws its own running header and footer, so every browser prints the same lines and never the file's path.
+     cv-print.ts writes the date into @top-right. */
+  @page {
+    size: A4; margin: 14mm;
+    @top-left { content: "CV - Rei Nuttanon Tr."; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 8pt; color: #555; }
+    @bottom-left { content: "https://reinatt.com/cv"; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 8pt; color: #555; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 8pt; color: #555; }
+  }
 }
 
 /* A client engagement nested under a consulting role */
 .cv-sub { margin-top: 10px; padding-left: 14px; border-left: 2px solid var(--rule); }
 .cv-sub h4 { margin: 0; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em; }
 @media print {
-  .cv-sub { margin-top: 6px; break-inside: avoid; }
+  .cv-sub { margin-top: 4px; break-inside: avoid; }
   /* keep a short role on one page; only a role with nested engagements may split, between them */
   .cv-role { break-inside: avoid; }
   .cv-role:has(.cv-sub) { break-inside: auto; }
 }
 .cv-note { margin-top: 10px; color: var(--ink-3); font-size: 0.9rem; }
+/* keep a hyphenated name such as EC-CUBE on one line */
+.nb { white-space: nowrap; }
 
 /* ---------- writing: the list and the article pages ---------- */
 .writing-page { padding-block: 112px 0; min-height: 100svh; }
